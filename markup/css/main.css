@@ -1714,10 +1714,5 @@ img {
 .header__logo-link:not(.header__logo-link--active):hover {
   opacity: 0.5;
 }
-.notpage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
+
 /*# sourceMappingURL=main.css.map */
