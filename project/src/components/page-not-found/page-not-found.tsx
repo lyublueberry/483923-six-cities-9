@@ -1,4 +1,5 @@
 import Logo from '../logo/logo';
+import './page-not-found.css';
 
 function NotFoundPageScreen(): JSX.Element {
   return (
