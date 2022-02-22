@@ -6,12 +6,14 @@ import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import PropertyScreen from '../property-screen/property-screen';
 import PrivateRoute from '../private-route/private-route';
+import { Offers } from '../../types/offers';
 
 type AppScrenProps = {
   placesCount: number;
+  offers: Offers;
 }
 
-function App({ placesCount }: AppScrenProps): JSX.Element {
+function App({ placesCount, offers }: AppScrenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>

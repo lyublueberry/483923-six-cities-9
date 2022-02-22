@@ -1,6 +1,6 @@
 import {User} from './user';
 
-export type Review = {
+export type reviews = {
   comment: string;
   date: string;
   id: number;

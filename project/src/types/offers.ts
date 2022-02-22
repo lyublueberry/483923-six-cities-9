@@ -1,17 +1,6 @@
 import {User} from './user';
 
-export type Location = {
-  latitude: number;
-  longitude: number;
-  zoom: number;
-};
-
-export type City = {
-  location: Location;
-  name: string;
-};
-
-export type Offer = {
+export type Offers = {
   bedrooms: number;
   city: City;
   description: string;
@@ -30,3 +19,13 @@ export type Offer = {
   type: string;
 };
 
+export type Location = {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+};
+
+export type City = {
+  location: Location;
+  name: string;
+};
