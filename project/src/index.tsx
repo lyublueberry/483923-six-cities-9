@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-import { offers } from './mocks/offers';
+import {offers} from './mocks/offers';
 
 const Settings = {
-  PLACE_COUNT: 6,
+  PLACE_COUNT: 5,
 };
 
 ReactDOM.render(

@@ -1,6 +1,6 @@
 import {User} from './user';
 
-export type Offers = {
+export type Offer = {
   bedrooms: number;
   city: City;
   description: string;
@@ -29,3 +29,5 @@ export type City = {
   location: Location;
   name: string;
 };
+
+export type Offers = Offer[];
