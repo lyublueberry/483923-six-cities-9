@@ -16,7 +16,7 @@ function OfferCardScreen(props: OfferCardScreenProps): JSX.Element {
     <article className="cities__place-card place-card" onMouseOver={() => { setOfferCardActiveId(id); }}>
       {getCardMarkPremium()}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/offer/${offerCardActiveId}`}>
+        <Link to={`/offer/:${offerCardActiveId}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place" />
         </Link>
       </div>
@@ -35,7 +35,7 @@ function OfferCardScreen(props: OfferCardScreenProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: '80%' }}></span>
+            <span style={{ width:`${offer.rating / 5 * 100}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
