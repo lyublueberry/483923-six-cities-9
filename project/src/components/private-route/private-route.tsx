@@ -6,7 +6,7 @@ type PrivateRouteProps = {
 }
 
 function PrivateRoute({component}: PrivateRouteProps):JSX.Element {
-  const hasAccess = false;
+  const hasAccess = true;
 
   return hasAccess ? component : <Navigate to={AppRoute.Login}/>;
 }
