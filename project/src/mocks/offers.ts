@@ -7,7 +7,7 @@ export const offers: Offers = [
       location: {
         latitude: 50.938361,
         longitude: 6.959974,
-        zoom: 13,
+        zoom: 10,
       },
     },
     previewImage: 'https://9.react.pages.academy/static/hotel/13.jpg',
@@ -57,7 +57,7 @@ export const offers: Offers = [
     location: {
       latitude: 50.916361,
       longitude: 6.944974,
-      zoom: 16,
+      zoom: 10,
     },
     id: 1,
   },
@@ -67,7 +67,7 @@ export const offers: Offers = [
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
-        zoom: 13,
+        zoom: 10,
       },
     },
     previewImage: 'https://9.react.pages.academy/static/hotel/13.jpg',
@@ -112,7 +112,7 @@ export const offers: Offers = [
     location: {
       latitude: 48.843610000000005,
       longitude: 2.338499,
-      zoom: 16,
+      zoom: 10,
     },
     id: 2,
   },
@@ -122,7 +122,7 @@ export const offers: Offers = [
       location: {
         latitude: 53.550341,
         longitude: 10.000654,
-        zoom: 13,
+        zoom: 10,
       },
     },
     previewImage: 'https://9.react.pages.academy/static/hotel/9.jpg',
@@ -169,7 +169,7 @@ export const offers: Offers = [
     location: {
       latitude: 53.529341,
       longitude: 9.975654,
-      zoom: 16,
+      zoom: 10,
     },
     id: 3,
   },
@@ -179,7 +179,7 @@ export const offers: Offers = [
       location: {
         latitude: 50.846557,
         longitude: 4.351697,
-        zoom: 13,
+        zoom: 10,
       },
     },
     previewImage: 'https://9.react.pages.academy/static/hotel/7.jpg',
@@ -222,7 +222,7 @@ export const offers: Offers = [
     location: {
       latitude: 50.842557,
       longitude: 4.3536969999999995,
-      zoom: 16,
+      zoom: 10,
     },
     id: 4,
   },

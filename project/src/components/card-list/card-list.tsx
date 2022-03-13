@@ -3,14 +3,14 @@ import { Offers } from '../../types/offer';
 
 type OfferCardListProps = {
   offers: Offers;
+  onOfferHover:(id:number) => void;
 }
 
-function OfferCardListScreen(props: OfferCardListProps): JSX.Element {
-  const { offers } = props;
+function OfferCardListScreen({offers, onOfferHover}: OfferCardListProps): JSX.Element {
 
   return (
     <div className='cities__places-list places__list tabs__content'> {
-      offers.map((offer) => <OfferCardScreen key={offer.id} offer={offer} />)
+      offers.map((offer) => <OfferCardScreen key={offer.id} offer={offer} onOfferHover={onOfferHover} />)
     }
     </div>
   );

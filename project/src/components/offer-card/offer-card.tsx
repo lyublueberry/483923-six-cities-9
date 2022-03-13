@@ -1,22 +1,25 @@
 import { Offer } from '../../types/offer';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 
 type OfferCardScreenProps = {
   offer: Offer;
+  onOfferHover?: (id: number) => void;
+  onOfferLeave?:(id: null) => void;
 };
 
-function OfferCardScreen(props: OfferCardScreenProps): JSX.Element {
-  const { offer } = props;
-  const { previewImage, title, price, type, isPremium, id } = offer;
+function OfferCardScreen({ offer, onOfferHover, onOfferLeave }: OfferCardScreenProps): JSX.Element {
+  const { previewImage, title, price, type, isPremium } = offer;
   const getCardMarkPremium = () => isPremium ? <div className="place-card__mark"><span>Premium</span></div> : '';
-  const [offerCardActiveId, setOfferCardActiveId] = useState(0);
 
   return (
-    <article className="cities__place-card place-card" onMouseOver={() => { setOfferCardActiveId(id); }}>
+    <article className="cities__place-card place-card"
+      onMouseOver={() => onOfferHover?.(offer.id)}
+      onMouseLeave={() => onOfferLeave?.(null)}
+    >
       {getCardMarkPremium()}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/offer/:${offerCardActiveId}`}>
+        <Link to={`${AppRoute.Offer}${offer.id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place" />
         </Link>
       </div>
@@ -35,16 +38,16 @@ function OfferCardScreen(props: OfferCardScreenProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width:`${offer.rating / 5 * 100}%`}}></span>
+            <span style={{ width: `${offer.rating / 5 * 100}%` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${offerCardActiveId}`}>{title}</Link>
+          <Link to={`${AppRoute.Offer}/${offer.id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
-    </article>
+    </article >
   );
 }
 
