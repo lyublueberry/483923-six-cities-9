@@ -1,20 +1,31 @@
 import Logo from '../logo/logo';
 import OfferCardListScreen from '../card-list/card-list';
-import {Offers} from '../../types/offer';
+import { Offers } from '../../types/offer';
+import MapCity from '../map/map';
+import {useState} from 'react';
 
 type MainScreenProps = {
   placesCount: number;
   offers: Offers;
 }
 
-function MainScreen({placesCount, offers}: MainScreenProps): JSX.Element {
+function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
+  const[activeOffer, setActiveOffer] = useState(0);
+
+  const handleHover = (id:number) => {
+    const currentPoint = offers.find((offer) => offer.id === id,
+    );
+    if(currentPoint){
+      setActiveOffer(currentPoint.id);
+    }
+  };
   return (
     <div className="page page--gray page--main">
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Logo/>
+              <Logo />
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -95,12 +106,16 @@ function MainScreen({placesCount, offers}: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {<OfferCardListScreen offers={offers}/>}
+                {<OfferCardListScreen offers={offers} onOfferHover={handleHover}/>}
 
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              {offers.length && (
+                <section className="cities__map map">
+                  <MapCity offers={offers} activeOffer={activeOffer}/>
+                </section>
+              )}
             </div>
           </div>
         </div>
