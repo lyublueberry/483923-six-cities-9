@@ -3,6 +3,7 @@ import { Offers, Offer } from '../../types/offer';
 import { useParams } from 'react-router-dom';
 import CommentSubmissionFormScreen from '../comment-submittion-form/comment-submission-form';
 import ReviewCardList from '../review-card-list/review-card-list';
+import MapCity from '../map/map';
 
 function RoomPageScreen({ offers }: { offers: Offers }): JSX.Element {
   const param = useParams();
@@ -125,7 +126,9 @@ function RoomPageScreen({ offers }: { offers: Offers }): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <section className="property__map map">
+            <MapCity offers={offers.slice(0,3)} activeOffer={0} />
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
