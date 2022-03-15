@@ -2,7 +2,7 @@ import Logo from '../logo/logo';
 import { Offers, Offer } from '../../types/offer';
 import { useParams } from 'react-router-dom';
 import CommentSubmissionFormScreen from '../comment-submittion-form/comment-submission-form';
-import ReviewCardScreen from '../review-card/review-card';
+import ReviewCardList from '../review-card-list/review-card-list';
 
 function RoomPageScreen({ offers }: { offers: Offers }): JSX.Element {
   const param = useParams();
@@ -120,10 +120,7 @@ function RoomPageScreen({ offers }: { offers: Offers }): JSX.Element {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-                <ul className="reviews__list">
-                  <ReviewCardScreen />
-                </ul>
+                <ReviewCardList />
                 <CommentSubmissionFormScreen />
               </section>
             </div>
