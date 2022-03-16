@@ -106,8 +106,7 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {<OfferCardListScreen offers={offers} onOfferHover={handleHover}/>}
-
+                {<OfferCardListScreen preclassNameCard='cities__place-card ' classNameCard='place-card' offers={offers} onOfferHover={handleHover}/>}
               </div>
             </section>
             <div className="cities__right-section">

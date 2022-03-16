@@ -4,15 +4,17 @@ import { Offers } from '../../types/offer';
 type OfferCardListProps = {
   offers: Offers;
   onOfferHover:(id:number) => void;
+  classNameCard:string;
+  preclassNameCard:string;
 }
 
-function OfferCardListScreen({offers, onOfferHover}: OfferCardListProps): JSX.Element {
+function OfferCardListScreen({offers, onOfferHover, classNameCard, preclassNameCard}: OfferCardListProps): JSX.Element {
 
   return (
-    <div className='cities__places-list places__list tabs__content'> {
-      offers.map((offer) => <OfferCardScreen key={offer.id} offer={offer} onOfferHover={onOfferHover} />)
+    <> {
+      offers.map((offer) => <OfferCardScreen classNameCard={classNameCard} preclassNameCard={preclassNameCard} key={offer.id} offer={offer} onOfferHover={onOfferHover} />)
     }
-    </div>
+    </>
   );
 
 }
