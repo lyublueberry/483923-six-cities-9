@@ -15,9 +15,7 @@ function RoomPageScreen({ offers }: { offers: Offers }): JSX.Element {
   const getUserStatus = () => offerItem.host.isPro ? 'Pro' : '';
   const[activeOffer, setActiveOffer] = useState(0);
 
-  const handleHover = (id:number) => {
-    const currentPoint = offers.find((offer) => offer.id === id,
-    );
+  const handleHover = (id:number) => {const currentPoint = offers.find((offer) => offer.id === id);
     if(currentPoint){
       setActiveOffer(currentPoint.id);
     }
@@ -144,7 +142,7 @@ function RoomPageScreen({ offers }: { offers: Offers }): JSX.Element {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {<OfferCardListScreen offers={offers.slice(0,3)} preclassNameCard='near-places__card ' classNameCard='place-card' onOfferHover={handleHover}/>}
+              {<OfferCardListScreen offers={offers.slice(0,3)} classNameCard='near-places__card ' onOfferHover={handleHover}/>}
             </div>
 
           </section>

@@ -7,15 +7,14 @@ type OfferCardScreenProps = {
   onOfferHover?: (id: number) => void;
   onOfferLeave?:(id: null) => void;
   classNameCard:string;
-  preclassNameCard:string;
 };
 
-function OfferCardScreen({ offer, onOfferHover, onOfferLeave, classNameCard='__place-card', preclassNameCard='cities' }: OfferCardScreenProps): JSX.Element {
+function OfferCardScreen({ offer, onOfferHover, onOfferLeave, classNameCard='cities__place-card'}: OfferCardScreenProps): JSX.Element {
   const { previewImage, title, price, type, isPremium } = offer;
   const getCardMarkPremium = () => isPremium ? <div className="place-card__mark"><span>Premium</span></div> : '';
 
   return (
-    <article className={`${preclassNameCard+classNameCard}`}
+    <article className={`${classNameCard}`}
       onMouseOver={() => onOfferHover?.(offer.id)}
       onMouseLeave={() => onOfferLeave?.(null)}
     >
