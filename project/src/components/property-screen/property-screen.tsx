@@ -142,7 +142,7 @@ function RoomPageScreen({ offers }: { offers: Offers }): JSX.Element {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {<OfferCardListScreen offers={offers.slice(0,3)} classNameCard='near-places__card ' onOfferHover={handleHover}/>}
+              {<OfferCardListScreen offers={offers.slice(0,3)} classNameCard='near-places__card place-card' onOfferHover={handleHover}/>}
             </div>
 
           </section>
