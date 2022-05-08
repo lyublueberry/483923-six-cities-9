@@ -3,14 +3,14 @@ import OfferCardListScreen from '../card-list/card-list';
 import MapCity from '../map/map';
 import { useState } from 'react';
 import ListCities from '../list-cities/list-cities';
-import {useAppSelector} from '../../hooks/index';
+import { useAppSelector } from '../../hooks/index';
 import { getCurrentOffers } from '../../utils';
 
 
 function MainScreen(): JSX.Element {
-  const {currentCity, offers} = useAppSelector((state) => state);
+  const { currentCity, offers } = useAppSelector((state) => state);
   const offersСertainСity = getCurrentOffers(currentCity, offers);//по определенному городу предложения
-  const countOffersСertainСity =offersСertainСity.length;
+  const countOffersСertainСity = offersСertainСity.length;
   const [activeOffer, setActiveOffer] = useState(0);
   const handleHover = (id: number) => {
     const currentPoint = offers.find((offer) => offer.id === id,
@@ -78,11 +78,11 @@ function MainScreen(): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              {offers.length && (
-                <section className="cities__map map">
-                  <MapCity offers={offersСertainСity} activeOffer={activeOffer} />
-                </section>
-              )}
+
+              <section className="cities__map map">
+                <MapCity offers={offersСertainСity} activeOffer={activeOffer} />
+              </section>
+
             </div>
           </div>
         </div>

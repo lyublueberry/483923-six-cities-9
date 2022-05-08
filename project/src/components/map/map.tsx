@@ -19,11 +19,11 @@ const currentCustomIcon = new Icon({
   iconSize: [40, 40],
   iconAnchor: [20, 40]});
 
-function MapCity(props: MapProps): JSX.Element {
-  const { offers, activeOffer} = props;
-
+function MapCity({offers,activeOffer}: MapProps): JSX.Element {
+  const currentCity = offers[0].city;
+  const {location: {latitude: lat, longitude: lng, zoom}} = currentCity;
   const mapRef = useRef(null);
-  const map = useMap(mapRef, offers[0].city);
+  const map = useMap(mapRef, currentCity);
 
   useEffect(() => {
     if (map) {
@@ -34,8 +34,9 @@ function MapCity(props: MapProps): JSX.Element {
             id === activeOffer ? currentCustomIcon : defaultCustomIcon)
           .addTo(map);
       });
+      map.flyTo([lat, lng], zoom);
     }
-  }, [map, offers, activeOffer]);
+  }, [map, offers, activeOffer, lat, lng, zoom]);
 
   return <div style={{ height: '500px' }} ref={mapRef}></div>;
 }
