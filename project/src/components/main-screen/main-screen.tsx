@@ -1,21 +1,21 @@
 import Logo from '../logo/logo';
 import OfferCardListScreen from '../card-list/card-list';
-import { Offers } from '../../types/offer';
 import MapCity from '../map/map';
-import {useState} from 'react';
+import { useState } from 'react';
+import ListCities from '../list-cities/list-cities';
+import {useAppSelector} from '../../hooks/index';
+import { getCurrentOffers } from '../../utils';
 
-type MainScreenProps = {
-  placesCount: number;
-  offers: Offers;
-}
 
-function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
-  const[activeOffer, setActiveOffer] = useState(0);
-
-  const handleHover = (id:number) => {
+function MainScreen(): JSX.Element {
+  const {currentCity, offers} = useAppSelector((state) => state);
+  const offersСertainСity = getCurrentOffers(currentCity, offers);//по определенному городу предложения
+  const countOffersСertainСity =offersСertainСity.length;
+  const [activeOffer, setActiveOffer] = useState(0);
+  const handleHover = (id: number) => {
     const currentPoint = offers.find((offer) => offer.id === id,
     );
-    if(currentPoint){
+    if (currentPoint) {
       setActiveOffer(currentPoint.id);
     }
   };
@@ -50,46 +50,14 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="/#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="/#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="/#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active" href="/#">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="/#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="/#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
-          </section>
+          <ListCities />
         </div>
         <div className="cities">
+
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+              <b className="places__found">{countOffersСertainСity} to stay in {currentCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -106,13 +74,13 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {<OfferCardListScreen classNameCard='cities__place-card place-card' offers={offers} onOfferHover={handleHover}/>}
+                {<OfferCardListScreen classNameCard='cities__place-card place-card' offers={offersСertainСity} onOfferHover={handleHover} />}
               </div>
             </section>
             <div className="cities__right-section">
               {offers.length && (
                 <section className="cities__map map">
-                  <MapCity offers={offers} activeOffer={activeOffer}/>
+                  <MapCity offers={offersСertainСity} activeOffer={activeOffer} />
                 </section>
               )}
             </div>

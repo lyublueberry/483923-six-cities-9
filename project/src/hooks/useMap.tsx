@@ -1,12 +1,13 @@
 import { useEffect, useState, MutableRefObject } from 'react';
 import leaflet, { Map } from 'leaflet';
-import { Location } from '../types/offer';
+import { City } from '../types/offer';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../const';
 
 function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
-  location: Location): Map | null {
+  city: City): Map | null {
   const [map, setMap] = useState<Map | null>(null);
+  const {location} = city;
 
   useEffect(() => {
     if (mapRef.current !== null && map === null) {

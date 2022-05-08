@@ -23,7 +23,7 @@ function MapCity(props: MapProps): JSX.Element {
   const { offers, activeOffer} = props;
 
   const mapRef = useRef(null);
-  const map = useMap(mapRef, offers[0].location);
+  const map = useMap(mapRef, offers[0].city);
 
   useEffect(() => {
     if (map) {
