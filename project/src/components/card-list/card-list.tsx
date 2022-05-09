@@ -1,5 +1,7 @@
 import OfferCardScreen from '../offer-card/offer-card';
 import { Offers } from '../../types/offer';
+import { sortOffers } from '../../utils';
+import { useAppSelector } from '../../hooks';
 
 type OfferCardListProps = {
   offers: Offers;
@@ -8,10 +10,12 @@ type OfferCardListProps = {
 }
 
 function OfferCardListScreen({offers, onOfferHover, classNameCard}: OfferCardListProps): JSX.Element {
+  const sortType = useAppSelector((state) => state.sortType);
 
+  const sortedOffers = sortOffers(offers, sortType);
   return (
     <> {
-      offers.map((offer) => <OfferCardScreen classNameCard={classNameCard} key={offer.id} offer={offer} onOfferHover={onOfferHover} />)
+      sortedOffers.map((offer) => <OfferCardScreen classNameCard={classNameCard} key={offer.id} offer={offer} onOfferHover={onOfferHover} />)
     }
     </>
   );
