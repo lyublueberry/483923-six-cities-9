@@ -3,14 +3,15 @@ import OfferCardListScreen from '../card-list/card-list';
 import MapCity from '../map/map';
 import { useState } from 'react';
 import ListCities from '../list-cities/list-cities';
-import {useAppSelector} from '../../hooks/index';
+import { useAppSelector } from '../../hooks/index';
 import { getCurrentOffers } from '../../utils';
+import SortList from '../sort-list/sort-list';
 
 
 function MainScreen(): JSX.Element {
-  const {currentCity, offers} = useAppSelector((state) => state);
+  const { currentCity, offers } = useAppSelector((state) => state);
   const offersСertainСity = getCurrentOffers(currentCity, offers);//по определенному городу предложения
-  const countOffersСertainСity =offersСertainСity.length;
+  const countOffersСertainСity = offersСertainСity.length;
   const [activeOffer, setActiveOffer] = useState(0);
   const handleHover = (id: number) => {
     const currentPoint = offers.find((offer) => offer.id === id,
@@ -58,31 +59,17 @@ function MainScreen(): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{countOffersСertainСity} to stay in {currentCity}</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlinkHref="#icon-arrow-select"></use>
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-                  <li className="places__option" tabIndex={0}>Price: low to high</li>
-                  <li className="places__option" tabIndex={0}>Price: high to low</li>
-                  <li className="places__option" tabIndex={0}>Top rated first</li>
-                </ul>
-              </form>
+              <SortList/>
               <div className="cities__places-list places__list tabs__content">
                 {<OfferCardListScreen classNameCard='cities__place-card place-card' offers={offersСertainСity} onOfferHover={handleHover} />}
               </div>
             </section>
             <div className="cities__right-section">
-              {offers.length && (
-                <section className="cities__map map">
-                  <MapCity offers={offersСertainСity} activeOffer={activeOffer} />
-                </section>
-              )}
+
+              <section className="cities__map map">
+                <MapCity offers={offersСertainСity} activeOffer={activeOffer} />
+              </section>
+
             </div>
           </div>
         </div>
