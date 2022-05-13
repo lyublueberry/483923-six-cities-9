@@ -17,3 +17,24 @@ export const SortType = {
   PRICE_LOW: 'Price: high to low',
   TOP_RATED: 'Top rated first',
 };
+
+export enum AutorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NOAUTH',
+  Unknown = 'UNKNOWN',
+}
+
+export enum APIRouter {
+  Login = '/login',
+  Logout = '/logout',
+  Favorite = '/favorite',
+  Offers = '/hotels',
+  Reviews = '/comments',
+}
+
+export const TIMEOUT_SHOW_ERROR = 2000;
+export enum HTTP_CODE {
+  BAD_REQUEST = 400,
+  UNAUTHORIZATED = 401,
+  NOT_FOUND = 404
+}
