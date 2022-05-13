@@ -1,4 +1,15 @@
-import {configureStore} from '@reduxjs/toolkit';
-import {reducer} from './reducer';
+import { configureStore } from '@reduxjs/toolkit';
+import { createAPI } from '../services/api';
+import { reducer } from './reducer';
 
-export const store = configureStore({reducer});// конфигурируем хранилище (RTK)
+export const api = createAPI();
+
+export const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: api,//спец поле куда запишем объект и будет доступно в асинхронном действии
+      },
+    }),
+});// конфигурируем хранилище (RTK)

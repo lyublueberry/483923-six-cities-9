@@ -1,13 +1,15 @@
 import Logo from '../logo/logo';
-import { Offers, Offer } from '../../types/offer';
+import { Offer } from '../../types/offer';
 import { useParams } from 'react-router-dom';
 import CommentSubmissionFormScreen from '../comment-submittion-form/comment-submission-form';
 import ReviewCardList from '../review-card-list/review-card-list';
 import MapCity from '../map/map';
 import OfferCardListScreen from '../card-list/card-list';
 import { useState } from 'react';
+import { useAppSelector } from '../../hooks';
 
-function RoomPageScreen({ offers }: { offers: Offers }): JSX.Element {
+function RoomPageScreen(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
   const param = useParams();
   const paramId = Number(param.id);
   const offerItem: Offer = paramId ? offers.filter((currentOffer) => currentOffer.id === paramId)[0] : offers[0];
