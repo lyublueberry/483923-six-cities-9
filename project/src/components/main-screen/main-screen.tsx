@@ -1,4 +1,3 @@
-import Logo from '../logo/logo';
 import OfferCardListScreen from '../card-list/card-list';
 import MapCity from '../map/map';
 import { useState } from 'react';
@@ -6,6 +5,7 @@ import ListCities from '../list-cities/list-cities';
 import { useAppSelector } from '../../hooks/index';
 import { getCurrentOffers } from '../../utils';
 import SortList from '../sort-list/sort-list';
+import HeaderScreen from '../header/header';
 
 
 function MainScreen(): JSX.Element {
@@ -22,31 +22,7 @@ function MainScreen(): JSX.Element {
   };
   return (
     <div className="page page--gray page--main">
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <Logo />
-            </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="/#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
-                </li>
-                <li className="header__nav-item">
-                  <a className="header__nav-link" href="/#">
-                    <span className="header__signout">Sign out</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <HeaderScreen />
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
@@ -59,7 +35,7 @@ function MainScreen(): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{countOffersСertainСity} to stay in {currentCity}</b>
-              <SortList/>
+              <SortList />
               <div className="cities__places-list places__list tabs__content">
                 {<OfferCardListScreen classNameCard='cities__place-card place-card' offers={offersСertainСity} onOfferHover={handleHover} />}
               </div>

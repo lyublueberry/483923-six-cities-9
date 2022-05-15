@@ -6,8 +6,8 @@ import ErrorMessage from './components/error-message/errorMessage';
 import { store } from './store';
 import { fetchOffersAction } from './store/api-action';
 
-
 store.dispatch(fetchOffersAction());
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
