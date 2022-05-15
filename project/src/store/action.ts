@@ -7,6 +7,7 @@ export const Action = {
   FILL_LIST_OFFERS: 'FILL_LIST_OFFERS',
   CHANGE_SORT_TYPE: 'CHAGE_SORT_TYPE',
   REDIRECT_TO_ROUTE: 'REDIRECT_TO_ROUTE',
+  GET_LOGIN: 'GET_LOGIN',
 };
 
 export const changeCityAction = createAction<string>(Action.CHANGE_CITY);
@@ -15,3 +16,4 @@ export const changeSortType = createAction<string>(Action.CHANGE_SORT_TYPE);
 export const loadOffers = createAction<Offer[]>('data/loadAction');
 export const requireAuthorization = createAction<AutorizationStatus>('user/requireAuthorization');
 export const redirectToRoute = createAction<AppRoute>(Action.REDIRECT_TO_ROUTE);
+export const getLogin = createAction(Action.GET_LOGIN, (value)=>({payload: value}));

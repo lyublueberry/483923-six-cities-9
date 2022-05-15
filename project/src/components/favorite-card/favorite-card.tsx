@@ -11,8 +11,6 @@ function FavoriteCardScreen(props: FavoriteCardScreenProps): JSX.Element {
   const getCardMarkPremium = () => isPremium ? <div className="place-card__mark"><span>Premium</span></div> : '';
 
   return (
-
-
     <article className="favorites__card place-card" key={offer.id}>
       {getCardMarkPremium}
       <div className="favorites__image-wrapper place-card__image-wrapper">
