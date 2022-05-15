@@ -32,7 +32,6 @@ export enum APIRouter {
   Reviews = '/comments',
 }
 
-export const TIMEOUT_SHOW_ERROR = 2000;
 export enum HTTP_CODE {
   BAD_REQUEST = 400,
   UNAUTHORIZATED = 401,
